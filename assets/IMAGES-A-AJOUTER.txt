@@ -1,0 +1,20 @@
+IMAGES À AJOUTER DANS assets/ :
+
+1. memoji.png          → Ton Memoji (carré, ex 200x200)
+2. icon-pokocheck.png  → Icône PokoCheck (carré, 512x512)
+3. icon-teacher.png    → Icône TeachBook (carré, 512x512)
+4. favicon.png         → Favicon du site (carré, 64x64 ou plus)
+
+CAPTURES D'ÉCRAN :
+- assets/screenshots/pokocheck/screen1.png, screen2.png, ...
+- assets/screenshots/teachbook/screen1.png, ...
+
+Le site fonctionne SANS ces images (placeholders de secours),
+mais le rendu sera bien meilleur avec.
+
+ORIENTATION DES CAPTURES :
+Dans chaque page (pokocheck.html, teachbook.html), repère :
+   <div class="shots-scroll portrait">
+- portrait  = captures iPhone (verticales)
+- landscape = captures iPad (horizontales)
+Change simplement le mot pour basculer.
