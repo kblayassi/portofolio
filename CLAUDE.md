@@ -32,6 +32,7 @@ kevinblayassi-site/
 ├── pokocheck-privacy.html  ← politique de confidentialité PokoCheck
 ├── teachbook.html          ← page détail TeachBook (« bientôt disponible »)
 ├── teachbook-privacy.html  ← politique de confidentialité TeachBook
+├── teachbook-terms.html    ← conditions d'utilisation (CGU) TeachBook
 ├── CNAME                   ← "kevinblayassi.dev" (domaine GitHub Pages — NE PAS supprimer)
 ├── .nojekyll               ← désactive Jekyll sur GitHub Pages (NE PAS supprimer)
 ├── GUIDE-DEPLOIEMENT.md    ← guide pas-à-pas de déploiement (GitHub Pages + DNS)
