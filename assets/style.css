@@ -154,7 +154,12 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 .card-icon img { width: 100%; height: 100%; object-fit: cover; }
 .card-icon.poko { background: linear-gradient(135deg, #FFD700, #FF6B35); }
 .card-icon.teacher { background: linear-gradient(135deg, #3B82F6, #8B5CF6); }
+.card-icon.mathik { background: linear-gradient(135deg, #FFB25A, #F76B15); }
 .card-icon.soon-ico { background: var(--pill-bg); box-shadow: none; color: var(--text-muted); }
+/* Quand la vraie icône est affichée, on masque le dégradé de fond pour qu'il ne
+   dépasse pas derrière les coins arrondis de l'icône. Le dégradé réapparaît en
+   repli (emoji) car l'<img> est alors retirée du DOM par le onerror. */
+.card-icon:has(img) { background: none; }
 
 .card-meta { flex: 1; min-width: 0; }
 .card-name { font-size: 17px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
@@ -205,10 +210,11 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
   cursor: default;
 }
 .detail-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.detail-icon.poko img, .detail-icon.teacher img { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18)); }
+.detail-icon.poko img, .detail-icon.teacher img, .detail-icon.mathik img { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18)); }
 .detail-icon.no-img { border-radius: 26px; }
 .detail-icon.poko.no-img { background: linear-gradient(135deg, #FFD700, #FF6B35); box-shadow: 0 8px 28px rgba(255,107,53,0.3); }
 .detail-icon.teacher.no-img { background: linear-gradient(135deg, #3B82F6, #8B5CF6); box-shadow: 0 8px 28px rgba(99,102,241,0.3); }
+.detail-icon.mathik.no-img { background: linear-gradient(135deg, #FFB25A, #F76B15); box-shadow: 0 8px 28px rgba(247,107,21,0.3); }
 
 .detail-text { flex: 1; min-width: 260px; }
 .detail-title { font-size: 32px; font-weight: 500; color: var(--text); letter-spacing: -0.5px; margin-bottom: 6px; }
@@ -262,8 +268,11 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 .shot:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(0,0,0,0.14); }
 .shot img { display: block; height: 100%; width: 100%; object-fit: contain; }
 
-.shots-scroll.portrait .shot { height: 480px; }
-.shots-scroll.portrait .shot img { width: auto; }
+/* Largeur figée (≈ ratio iPhone à 480px de haut) : sans elle, la vignette a une
+   largeur nulle tant que l'image n'est pas chargée, la mise en page se décale au
+   chargement et le scroll-snap ne se cale plus sur la 1re capture. */
+.shots-scroll.portrait .shot { height: 480px; width: 222px; }
+.shots-scroll.portrait .shot img { width: 100%; }
 .shots-scroll.landscape .shot { width: 560px; }
 .shots-scroll.landscape .shot img { height: auto; }
 
@@ -291,6 +300,7 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 }
 .feature-ico.poko { background: #E3F6E5; color: #2E9E54; }
 .feature-ico.teacher { background: #EEE9FE; color: #6D4FC9; }
+.feature-ico.mathik { background: #FFEBD6; color: #C25A0B; }
 .feature-txt { font-size: 13px; color: var(--text-soft); line-height: 1.45; padding-top: 6px; }
 
 .detail-blob {
@@ -300,6 +310,7 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 }
 .detail-blob.poko { background: radial-gradient(circle, #a9e8b2, transparent 70%); }
 .detail-blob.teacher { background: radial-gradient(circle, #cdbcff, transparent 70%); }
+.detail-blob.mathik { background: radial-gradient(circle, #ffd4a6, transparent 70%); }
 
 .legal-content { padding: 20px 40px 60px; max-width: 720px; margin: 0 auto; position: relative; z-index: 5; }
 .legal-title { font-size: 28px; font-weight: 500; color: var(--text); margin-bottom: 8px; letter-spacing: -0.4px; }

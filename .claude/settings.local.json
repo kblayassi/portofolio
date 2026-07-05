@@ -11,7 +11,11 @@
       "Bash(dig +short kevinblayassi.dev NS)",
       "Bash(curl -sI --max-time 15 https://kevinblayassi.dev)",
       "Bash(openssl s_client -servername kevinblayassi.dev -connect kevinblayassi.dev:443)",
-      "Bash(openssl x509 *)"
+      "Bash(openssl x509 *)",
+      "Bash(git fetch *)",
+      "Bash(git stash *)",
+      "Bash(git rebase *)",
+      "Read(//Users/kblayassi/Documents/Swift/**)"
     ]
   }
 }
