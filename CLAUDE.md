@@ -57,11 +57,13 @@ kevinblayassi-site/
   avec effet tilt (`data-tilt`).
 - **Page détail PokoCheck (`pokocheck.html`)** : app **publiée** sur l'App Store
   (id `6760971481`). Hero avec icône, bouton de téléchargement App Store, stats
-  (4,4 ★ · 21 avis · 4+ · 84,9 Mo), carrousel des 10 captures, sections « À propos »
-  et « Fonctionnalités ». App compagnon (non officielle) pour le jeu *Pokopia*.
-- **Page détail TeachBook (`teachbook.html`)** : app **non publiée** (« Bientôt
-  disponible »). Agenda/carnet de notes/emploi du temps pour enseignants
-  (iPadOS + companion iPhone, Apple Pencil, iCloud). Pas de bouton App Store.
+  (4,4 ★ · 25 avis · v2.0 · 4+ · 84,9 Mo), carrousel des 10 captures, sections
+  « À propos » et « Fonctionnalités ». App compagnon (non officielle) pour *Pokopia*.
+- **Page détail TeachBook (`teachbook.html`)** : app **publiée** sur l'App Store
+  (id `6785545899`, « TeachBook : carnet du prof »). Stats (5,0 ★ · 1 avis · v1.0 ·
+  4+ · 56,9 Mo), carrousel des 10 captures iPad, bouton de téléchargement.
+  Carnet de notes / agenda / plans de classe pour enseignants (iPadOS + companion
+  iPhone, Apple Pencil, iCloud), gratuit à l'essai puis abonnement.
 - **Politiques de confidentialité** PokoCheck et TeachBook : pages légales
   complètes (stockage local, iCloud, achats Apple, pas de collecte).
 - **Design system** complet dans `style.css` : variables de thème, dark mode,
@@ -85,8 +87,9 @@ kevinblayassi-site/
   manquante par un emoji ou un placeholder. Le site reste donc fonctionnel et
   présentable même sans toutes les images. Garder ce pattern en ajoutant des images.
 - **Orientation des captures** : la classe sur `<div class="shots-scroll …">`
-  contrôle l'affichage — `portrait` (captures iPhone, verticales) ou `landscape`
-  (captures iPad, horizontales). Voir les `README.txt` dans `assets/screenshots/`.
+  contrôle l'affichage — `portrait` (iPhone, 222×480), `tablet` (iPad en portrait,
+  ratio 3:4, 360×480) ou `landscape` (iPad horizontal, 560px de large).
+  Voir les `README.txt` dans `assets/screenshots/`.
 - **Couleurs d'app** : PokoCheck = dégradé orange/jaune (`poko`), TeachBook =
   dégradé bleu/violet (`teacher`). Réutiliser ces classes pour rester cohérent.
 - **Liens App Store** : ouverts dans un nouvel onglet ; sur la carte d'accueil,
@@ -99,9 +102,10 @@ kevinblayassi-site/
 - **`favicon.png` manquant** : référencé par `<link rel="icon">` dans toutes les
   pages mais absent de `assets/`. À ajouter (le navigateur affiche une favicon
   par défaut en attendant).
-- **Captures TeachBook** : dossier vide, à remplir au lancement de l'app.
-- **TeachBook** : remplacer le pill « Bientôt disponible » par un vrai bouton
-  App Store une fois l'app publiée.
+- **Icône TeachBook** : `assets/icon-teacher.png` (cahier « 20 » + Pencil) ne
+  correspond plus à l'icône App Store actuelle (« A+ » violet). À remplacer.
+- **Mathik** : app non publiée, la page garde le pill « Bientôt disponible »
+  et le dossier `assets/screenshots/mathik/` reste à créer.
 
 ---
 
