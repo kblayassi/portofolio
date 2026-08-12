@@ -152,7 +152,7 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 .card-icon img { width: 100%; height: 100%; object-fit: cover; }
-.card-icon.poko { background: linear-gradient(135deg, #FFD700, #FF6B35); }
+.card-icon.poko { background: linear-gradient(135deg, #9BE15D, #2E9E54); }
 .card-icon.teacher { background: linear-gradient(135deg, #3B82F6, #8B5CF6); }
 .card-icon.mathik { background: linear-gradient(135deg, #FFB25A, #F76B15); }
 .card-icon.soon-ico { background: var(--pill-bg); box-shadow: none; color: var(--text-muted); }
@@ -212,7 +212,7 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 .detail-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .detail-icon.poko img, .detail-icon.teacher img, .detail-icon.mathik img { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18)); }
 .detail-icon.no-img { border-radius: 26px; }
-.detail-icon.poko.no-img { background: linear-gradient(135deg, #FFD700, #FF6B35); box-shadow: 0 8px 28px rgba(255,107,53,0.3); }
+.detail-icon.poko.no-img { background: linear-gradient(135deg, #9BE15D, #2E9E54); box-shadow: 0 8px 28px rgba(46,158,84,0.3); }
 .detail-icon.teacher.no-img { background: linear-gradient(135deg, #3B82F6, #8B5CF6); box-shadow: 0 8px 28px rgba(99,102,241,0.3); }
 .detail-icon.mathik.no-img { background: linear-gradient(135deg, #FFB25A, #F76B15); box-shadow: 0 8px 28px rgba(247,107,21,0.3); }
 
@@ -336,7 +336,10 @@ footer {
 .footer-link:hover { color: var(--text); }
 
 @media (max-width: 600px) {
-  nav, .hero, section, .detail-hero, .shots, .detail-section, footer { padding-left: 22px; padding-right: 22px; }
+  nav, .hero, section, .detail-hero, .detail-section, footer { padding-left: 22px; padding-right: 22px; }
+  /* .shots reste à 0 : c'est .shots-scroll qui porte le retrait, sinon les deux
+     paddings s'additionnent et le carrousel n'est plus aligné sur la nav. */
+  .shots-scroll { padding-left: 22px; padding-right: 22px; scroll-padding-left: 22px; }
   .hero-title { font-size: 32px; }
   .detail-hero { gap: 20px; }
   .detail-icon { width: 88px; height: 88px; font-size: 42px; }

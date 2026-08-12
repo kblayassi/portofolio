@@ -90,8 +90,13 @@ kevinblayassi-site/
   contrôle l'affichage — `portrait` (iPhone, 222×480), `tablet` (iPad en portrait,
   ratio 3:4, 360×480) ou `landscape` (iPad horizontal, 560px de large).
   Voir les `README.txt` dans `assets/screenshots/`.
-- **Couleurs d'app** : PokoCheck = dégradé orange/jaune (`poko`), TeachBook =
-  dégradé bleu/violet (`teacher`). Réutiliser ces classes pour rester cohérent.
+- **Couleurs d'app** : PokoCheck = dégradé vert (`poko`, `#9BE15D → #2E9E54`),
+  TeachBook = dégradé bleu/violet (`teacher`). Réutiliser ces classes pour rester
+  cohérent.
+- **Cache-busting** : le `<link>` vers `style.css` porte un `?v=N`. GitHub Pages
+  sert le CSS avec `max-age=600` : sans ce paramètre, un visiteur déjà venu garde
+  jusqu'à 10 min l'ancien style avec le nouveau HTML. **Incrémenter `N` dans
+  toutes les pages à chaque modification de `style.css`.**
 - **Liens App Store** : ouverts dans un nouvel onglet ; sur la carte d'accueil,
   le bouton App Store stoppe la propagation pour ne pas suivre le lien de la carte.
 
