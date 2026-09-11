@@ -30,9 +30,11 @@ kevinblayassi-site/
 ├── index.html              ← page d'accueil (hub des apps)
 ├── pokocheck.html          ← page détail PokoCheck (app publiée)
 ├── pokocheck-privacy.html  ← politique de confidentialité PokoCheck
-├── teachbook.html          ← page détail TeachBook (« bientôt disponible »)
+├── teachbook.html          ← page détail TeachBook (app publiée)
 ├── teachbook-privacy.html  ← politique de confidentialité TeachBook
 ├── teachbook-terms.html    ← conditions d'utilisation (CGU) TeachBook
+├── mathik.html             ← page détail Mathik (app publiée)
+├── mathik-privacy.html     ← politique de confidentialité Mathik
 ├── CNAME                   ← "kevinblayassi.dev" (domaine GitHub Pages — NE PAS supprimer)
 ├── .nojekyll               ← désactive Jekyll sur GitHub Pages (NE PAS supprimer)
 ├── GUIDE-DEPLOIEMENT.md    ← guide pas-à-pas de déploiement (GitHub Pages + DNS)
@@ -42,10 +44,12 @@ kevinblayassi-site/
     ├── memoji.png          ← memoji affiché dans la nav
     ├── icon-pokocheck.png  ← icône de l'app PokoCheck
     ├── icon-teacher.png    ← icône de l'app TeachBook
+    ├── icon-mathik.png     ← icône de l'app Mathik
     ├── IMAGES-A-AJOUTER.txt ← mémo des images à fournir
     └── screenshots/
         ├── pokocheck/      ← screen1.png … screen10.png + README.txt
-        └── teachbook/      ← (vide pour l'instant) + README.txt
+        ├── teachbook/      ← screen1.jpg … screen10.jpg (iPad) + README.txt
+        └── mathik/         ← screen1.jpg … screen5.jpg (iPhone) + README.txt
 ```
 
 ---
@@ -53,30 +57,36 @@ kevinblayassi-site/
 ## Travaux déjà réalisés
 
 - **Page d'accueil (`index.html`)** : hero, grille de cartes d'apps (PokoCheck,
-  TeachBook, + une carte « Prochaine app 2026 »), nav, footer. Cartes cliquables
+  TeachBook, Mathik, + une carte « Prochaine app 2026 »), nav, footer. Cartes cliquables
   avec effet tilt (`data-tilt`).
 - **Page détail PokoCheck (`pokocheck.html`)** : app **publiée** sur l'App Store
   (id `6760971481`). Hero avec icône, bouton de téléchargement App Store, stats
-  (4,4 ★ · 25 avis · v2.0 · 4+ · 84,9 Mo), carrousel des 10 captures, sections
+  (4,4 ★ · 27 avis · v2.0 · 4+ · 84,9 Mo), carrousel des 10 captures, sections
   « À propos » et « Fonctionnalités ». App compagnon (non officielle) pour *Pokopia*.
 - **Page détail TeachBook (`teachbook.html`)** : app **publiée** sur l'App Store
-  (id `6785545899`, « TeachBook : carnet du prof »). Stats (5,0 ★ · 1 avis · v1.0 ·
+  (id `6785545899`, « TeachBook : carnet du prof »). Stats (5,0 ★ · 3 avis · v1.0 ·
   4+ · 56,9 Mo), carrousel des 10 captures iPad, bouton de téléchargement.
   Carnet de notes / agenda / plans de classe pour enseignants (iPadOS + companion
   iPhone, Apple Pencil, iCloud), gratuit à l'essai puis abonnement.
-- **Politiques de confidentialité** PokoCheck et TeachBook : pages légales
+- **Page détail Mathik (`mathik.html`)** : app **publiée** sur l'App Store
+  (id `6805966325`, « Mathik : automatismes maths »). Hero avec icône, bouton de
+  téléchargement, carrousel des 5 captures iPhone (App Store V1), sections
+  « À propos » et « Fonctionnalités ». Automatismes de maths du lycée façon jeu
+  (répétition espacée, calcul mental, programmes officiels FR), mascotte π.
+- **Politiques de confidentialité** PokoCheck, TeachBook et Mathik : pages légales
   complètes (stockage local, iCloud, achats Apple, pas de collecte).
 - **Design system** complet dans `style.css` : variables de thème, dark mode,
   blobs décoratifs flous, cartes, badges, carrousel de captures (`portrait` /
-  `landscape`), sections détail, pages légales, footer, responsive.
+  `tablet` / `landscape`), sections détail, pages légales, footer, responsive.
 - **`tilt.js`** : interaction 3D sur les cartes et icônes.
 - **`GUIDE-DEPLOIEMENT.md`** : marche à suivre complète (création du repo,
   upload, activation GitHub Pages, achat domaine `.dev`, config DNS, HTTPS).
 
 ### État du déploiement
-- Le repo **n'est pas (encore) un dépôt git** localement (`git status` échoue).
-- `CNAME` + `.nojekyll` sont en place → prêt pour GitHub Pages.
-- Contacts utilisés : `contact@kevinblayassi.dev` (général / TeachBook),
+- Dépôt git en place, remote `origin` = `github.com/kblayassi/portofolio`,
+  branche `main`. Un push sur `main` republie le site via GitHub Pages.
+- `CNAME` + `.nojekyll` sont en place.
+- Contacts utilisés : `contact@kevinblayassi.dev` (général / TeachBook / Mathik),
   `pokocheckapp@icloud.com` (support PokoCheck).
 
 ---
@@ -91,8 +101,14 @@ kevinblayassi-site/
   ratio 3:4, 360×480) ou `landscape` (iPad horizontal, 560px de large).
   Voir les `README.txt` dans `assets/screenshots/`.
 - **Couleurs d'app** : PokoCheck = dégradé vert (`poko`, `#9BE15D → #2E9E54`),
-  TeachBook = dégradé bleu/violet (`teacher`). Réutiliser ces classes pour rester
-  cohérent.
+  TeachBook = dégradé bleu/violet (`teacher`), Mathik = dégradé orange
+  (`mathik`, `#FFB25A → #F76B15`). Réutiliser ces classes pour rester cohérent.
+- **Icônes d'app** : PNG 1024×1024 **avec les coins arrondis cuits dans l'image**
+  (alpha transparent). Le CSS n'arrondit rien — `.detail-icon img` est en
+  `object-fit: contain`, sans `border-radius`. Les bundles `.icon` d'Icon Composer
+  rendent un carré plein : il faut donc appliquer le masque « squircle » soi-même.
+  Le plus simple est de réutiliser le canal alpha de `icon-pokocheck.png`, qui porte
+  déjà la bonne forme (voir `assets/screenshots/mathik/README.txt`).
 - **Cache-busting** : le `<link>` vers `style.css` porte un `?v=N`. GitHub Pages
   sert le CSS avec `max-age=600` : sans ce paramètre, un visiteur déjà venu garde
   jusqu'à 10 min l'ancien style avec le nouveau HTML. **Incrémenter `N` dans
@@ -109,8 +125,16 @@ kevinblayassi-site/
   par défaut en attendant).
 - **Icône TeachBook** : `assets/icon-teacher.png` (cahier « 20 » + Pencil) ne
   correspond plus à l'icône App Store actuelle (« A+ » violet). À remplacer.
-- **Mathik** : app non publiée, la page garde le pill « Bientôt disponible »
-  et le dossier `assets/screenshots/mathik/` reste à créer.
+- **Stats Mathik** : la ligne du hero affiche Plateforme · Niveau · Langue, faute
+  de chiffres fiables — l'API `itunes.apple.com/lookup` ne renvoie encore rien pour
+  l'id `6805966325`. À aligner sur PokoCheck / TeachBook (note · avis · version ·
+  âge · taille) dès que Kevin les fournit.
+- **Lien App Store Mathik** : pointé sur `apps.apple.com/app/id6805966325` (sans
+  locale, Apple redirige vers la boutique du visiteur), alors que les autres pages
+  utilisent la forme `/fr/app/<slug>/id…`. À harmoniser si l'app est bien
+  distribuée en France.
+- **Captures iPad Mathik** : des captures iPad 13" (V1) existent dans la source
+  mais ne sont pas sur le site (un carrousel ne gère qu'une orientation).
 
 ---
 
