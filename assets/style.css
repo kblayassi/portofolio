@@ -96,6 +96,14 @@ nav {
 .nav-link:hover { color: var(--text); }
 .nav-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
 .nav-back:hover { color: var(--text); }
+.nav-lang {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--text-muted); text-decoration: none;
+  padding: 4px 9px; border-radius: 999px;
+  border: 0.5px solid var(--hairline); background: var(--pill-bg);
+  transition: color 0.15s;
+}
+.nav-lang:hover { color: var(--text); }
 
 .hero { padding: 64px 40px 48px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 5; }
 .hero-eyebrow { font-size: 12px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
@@ -155,6 +163,7 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 .card-icon.poko { background: linear-gradient(135deg, #9BE15D, #2E9E54); }
 .card-icon.teacher { background: linear-gradient(135deg, #3B82F6, #8B5CF6); }
 .card-icon.mathik { background: linear-gradient(135deg, #FFB25A, #F76B15); }
+.card-icon.caseclosed { background: linear-gradient(135deg, #FFD84A, #F5A524); }
 .card-icon.soon-ico { background: var(--pill-bg); box-shadow: none; color: var(--text-muted); }
 /* Quand la vraie icône est affichée, on masque le dégradé de fond pour qu'il ne
    dépasse pas derrière les coins arrondis de l'icône. Le dégradé réapparaît en
@@ -210,11 +219,12 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
   cursor: default;
 }
 .detail-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.detail-icon.poko img, .detail-icon.teacher img, .detail-icon.mathik img { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18)); }
+.detail-icon.poko img, .detail-icon.teacher img, .detail-icon.mathik img, .detail-icon.caseclosed img { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18)); }
 .detail-icon.no-img { border-radius: 26px; }
 .detail-icon.poko.no-img { background: linear-gradient(135deg, #9BE15D, #2E9E54); box-shadow: 0 8px 28px rgba(46,158,84,0.3); }
 .detail-icon.teacher.no-img { background: linear-gradient(135deg, #3B82F6, #8B5CF6); box-shadow: 0 8px 28px rgba(99,102,241,0.3); }
 .detail-icon.mathik.no-img { background: linear-gradient(135deg, #FFB25A, #F76B15); box-shadow: 0 8px 28px rgba(247,107,21,0.3); }
+.detail-icon.caseclosed.no-img { background: linear-gradient(135deg, #FFD84A, #F5A524); box-shadow: 0 8px 28px rgba(245,165,36,0.3); }
 
 .detail-text { flex: 1; min-width: 260px; }
 .detail-title { font-size: 32px; font-weight: 500; color: var(--text); letter-spacing: -0.5px; margin-bottom: 6px; }
@@ -305,6 +315,7 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 .feature-ico.poko { background: #E3F6E5; color: #2E9E54; }
 .feature-ico.teacher { background: #EEE9FE; color: #6D4FC9; }
 .feature-ico.mathik { background: #FFEBD6; color: #C25A0B; }
+.feature-ico.caseclosed { background: #FFF3CC; color: #A86A00; }
 .feature-txt { font-size: 13px; color: var(--text-soft); line-height: 1.45; padding-top: 6px; }
 
 .detail-blob {
@@ -315,6 +326,7 @@ section { padding: 0 40px 64px; max-width: 1000px; margin: 0 auto; position: rel
 .detail-blob.poko { background: radial-gradient(circle, #a9e8b2, transparent 70%); }
 .detail-blob.teacher { background: radial-gradient(circle, #cdbcff, transparent 70%); }
 .detail-blob.mathik { background: radial-gradient(circle, #ffd4a6, transparent 70%); }
+.detail-blob.caseclosed { background: radial-gradient(circle, #ffe78f, transparent 70%); }
 
 .legal-content { padding: 20px 40px 60px; max-width: 720px; margin: 0 auto; position: relative; z-index: 5; }
 .legal-title { font-size: 28px; font-weight: 500; color: var(--text); margin-bottom: 8px; letter-spacing: -0.4px; }

@@ -12,11 +12,12 @@ exigées par l'App Store. Site **statique pur** (HTML/CSS/JS vanilla), conçu po
 
 ## Stack & contraintes
 
-- **HTML statique** multi-pages, `lang="fr"`.
+- **HTML statique** multi-pages, **bilingue** : pages françaises à la racine (`lang="fr"`),
+  leurs jumelles anglaises dans `en/` avec le même nom de fichier (`lang="en"`).
 - **CSS unique** : `assets/style.css` (variables CSS, dark mode auto via
   `prefers-color-scheme`, responsive `@media max-width: 600px`).
-- **JS unique** : `assets/tilt.js` — effet de tilt 3D au survol (suit la souris),
-  désactivé si `prefers-reduced-motion`.
+- **JS** : `assets/tilt.js` — effet de tilt 3D au survol (suit la souris),
+  désactivé si `prefers-reduced-motion` ; `assets/lang.js` — choix de la langue (voir plus bas).
 - **Icônes** : Tabler Icons via CDN (`cdnjs`), classes `ti ti-*`.
 - **Police** : pile système Apple (`-apple-system`, `SF Pro Display`…).
 - Aucune donnée collectée, aucun tracker, aucun backend.
@@ -35,21 +36,27 @@ kevinblayassi-site/
 ├── teachbook-terms.html    ← conditions d'utilisation (CGU) TeachBook
 ├── mathik.html             ← page détail Mathik (app publiée)
 ├── mathik-privacy.html     ← politique de confidentialité Mathik
+├── caseclosed.html         ← page détail Case Closed (app publiée)
+├── caseclosed-privacy.html ← politique de confidentialité Case Closed
+├── en/                   ← les 10 mêmes pages en anglais (chemins en ../assets/)
 ├── CNAME                   ← "kevinblayassi.dev" (domaine GitHub Pages — NE PAS supprimer)
 ├── .nojekyll               ← désactive Jekyll sur GitHub Pages (NE PAS supprimer)
 ├── GUIDE-DEPLOIEMENT.md    ← guide pas-à-pas de déploiement (GitHub Pages + DNS)
 └── assets/
     ├── style.css           ← tout le style du site
     ├── tilt.js             ← effet de tilt 3D au survol
+    ├── lang.js             ← redirection FR / EN et mémorisation du choix
     ├── memoji.png          ← memoji affiché dans la nav
     ├── icon-pokocheck.png  ← icône de l'app PokoCheck
     ├── icon-teacher.png    ← icône de l'app TeachBook
     ├── icon-mathik.png     ← icône de l'app Mathik
+    ├── icon-caseclosed.png ← icône de l'app Case Closed
     ├── IMAGES-A-AJOUTER.txt ← mémo des images à fournir
     └── screenshots/
         ├── pokocheck/      ← screen1.png … screen10.png + README.txt
-        ├── teachbook/      ← screen1.jpg … screen10.jpg (iPad) + README.txt
-        └── mathik/         ← screen1.jpg … screen5.jpg (iPhone) + README.txt
+        ├── teachbook/      ← screen1.jpg … screen10.jpg (iPad) + en/ (captures anglaises) + README.txt
+        ├── mathik/         ← screen1.jpg … screen5.jpg (iPhone) + README.txt
+        └── caseclosed/     ← screen1.jpg … screen10.jpg (iPhone, affiches FR) + en/ + README.txt
 ```
 
 ---
@@ -73,7 +80,14 @@ kevinblayassi-site/
   téléchargement, carrousel des 5 captures iPhone (App Store V1), sections
   « À propos » et « Fonctionnalités ». Automatismes de maths du lycée façon jeu
   (répétition espacée, calcul mental, programmes officiels FR), mascotte π.
-- **Politiques de confidentialité** PokoCheck, TeachBook et Mathik : pages légales
+- **Page détail Case Closed (`caseclosed.html`)** : app **publiée** (id `6826655216`, octobre
+  2026). Jeu de déduction (placer les suspects sur le plan, démasquer le coupable), 25 affaires
+  offertes, 655 en tout, packs en achat unique, Game Center, 9 langues. Stats du hero : affaires
+  offertes · affaires · langues (l'API `itunes.apple.com/lookup` ne renvoyait encore rien à la
+  publication) ; carrousel des 10 affiches App Store françaises. Couleurs `caseclosed`
+  (`#FFD84A → #F5A524`). Politique `caseclosed-privacy.html` : données locales, Game Center,
+  aucun suivi.
+- **Politiques de confidentialité** PokoCheck, TeachBook, Mathik et Case Closed : pages légales
   complètes (stockage local, iCloud, achats Apple, pas de collecte).
 - **Design system** complet dans `style.css` : variables de thème, dark mode,
   blobs décoratifs flous, cartes, badges, carrousel de captures (`portrait` /
@@ -93,6 +107,18 @@ kevinblayassi-site/
 
 ## Conventions importantes
 
+- **Deux langues** : toute modification d'une page française se reporte dans sa jumelle
+  `en/<même nom>.html` (et inversement). Chaque page porte dans le `<head>` trois liens
+  `hreflang` absolus (`fr`, `en`, `x-default` = anglais) puis `<script src="…/lang.js">`, et dans
+  la nav une pastille `.nav-lang` (`EN` sur les pages françaises, `FR` sur les anglaises,
+  `data-lang` mémorise le choix). `lang.js` : choix mémorisé (`localStorage` « lang ») sinon
+  première langue du navigateur (français → FR, tout le reste → EN) ; les robots ne sont pas
+  redirigés. Pas de géolocalisation par IP : GitHub Pages ne sert que des fichiers statiques.
+- **Pages anglaises** : liens App Store sans pays (`apps.apple.com/app/…`, chaque visiteur
+  arrive sur sa boutique). Captures anglaises pour Case Closed et TeachBook
+  (`screenshots/<app>/en/`) ; Mathik (français uniquement) et PokoCheck (pas d'affiches anglaises
+  sur le Mac) gardent les captures françaises.
+
 - **Fallbacks d'images** : chaque `<img>` a un `onerror` qui remplace l'image
   manquante par un emoji ou un placeholder. Le site reste donc fonctionnel et
   présentable même sans toutes les images. Garder ce pattern en ajoutant des images.
@@ -102,7 +128,8 @@ kevinblayassi-site/
   Voir les `README.txt` dans `assets/screenshots/`.
 - **Couleurs d'app** : PokoCheck = dégradé vert (`poko`, `#9BE15D → #2E9E54`),
   TeachBook = dégradé bleu/violet (`teacher`), Mathik = dégradé orange
-  (`mathik`, `#FFB25A → #F76B15`). Réutiliser ces classes pour rester cohérent.
+  (`mathik`, `#FFB25A → #F76B15`), Case Closed = dégradé jaune (`caseclosed`,
+  `#FFD84A → #F5A524`). Réutiliser ces classes pour rester cohérent.
 - **Icônes d'app** : PNG 1024×1024 **avec les coins arrondis cuits dans l'image**
   (alpha transparent). Le CSS n'arrondit rien — `.detail-icon img` est en
   `object-fit: contain`, sans `border-radius`. Les bundles `.icon` d'Icon Composer
