@@ -141,7 +141,7 @@ kevinblayassi-site/
   jusqu'à 10 min l'ancien style avec le nouveau HTML. **Incrémenter `N` dans
   toutes les pages à chaque modification de `style.css`.**
 - **Aperçus de lien (Open Graph)** : chaque page porte, juste après `<meta name="description">`,
-  un bloc `og:*` complet + `twitter:card` (`summary_large_image`). L'image (`og:image`, URL
+  un bloc `og:*` complet + `twitter:card` (`summary_large_image`) et `twitter:title|description|image|image:alt` (copies des `og:*` : X les lit plus fiablement). L'image (`og:image`, URL
   absolue) est `assets/og/<app>-<fr|en>.jpg` (1200×630), `home-*` pour l'accueil ; les pages
   légales réutilisent l'image de leur app. Les images sont générées par
   `swift tools/make-og.swift` (icône + nom + slogan) : relancer après un changement d'icône ou
